@@ -10,6 +10,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Execute test'
+                echo 'Testing 1..2..3'
             }
         }
     }
