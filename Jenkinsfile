@@ -15,7 +15,7 @@ pipeline{
                         docker build -t ${APP_NAME}:$BUILD_ID .
                         docker image tag ${APP_NAME}:$BUILD_ID ${IMAGE_NAME}:$BUILD_ID
                         docker image tag ${APP_NAME}:$BUILD_ID ${IMAGE_NAME}:latest
-                        docker login -u sahar449 -p ${docker_hub}
+                        docker login -u oranbazak -p ${docker_hub}
                         docker push ${IMAGE_NAME}:$BUILD_ID
                         docker push ${IMAGE_NAME}:latest
                         """
