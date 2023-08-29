@@ -1,6 +1,7 @@
 import socket
 from uuid import getnode as get_mac
 from flask import Flask,jsonify
+# flask dir make web server
 
 # Get device details
 def get_device_details():
