@@ -27,6 +27,7 @@ pipeline{
                 script{
                     sh '''
                             docker run -d -p 5000:5000 --name $BUILD_ID ${IMAGE_NAME}:$BUILD_ID
+                            echo $(curl localhost:5000)
                         '''
                 }
             }
