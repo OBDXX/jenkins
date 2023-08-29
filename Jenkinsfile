@@ -22,5 +22,9 @@ pipeline{
                 }
             }
         }
+        stage('Docker pull and run curl test')
+            steps{
+                script{
+                    
     }
 }
