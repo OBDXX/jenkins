@@ -2,7 +2,6 @@ pipeline{
     agent any
     environment{
         DOCKERHUB_USERNAME = "oranbazak"
-        //DOCKERHUB_LOGIN = "docker_hub_login"
         APP_NAME = "project"
         IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
     }
