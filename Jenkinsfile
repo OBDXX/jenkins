@@ -13,7 +13,7 @@ pipeline{
                     withCredentials([string(credentialsId: 'docker_hub_login_new', variable: 'docker_hub')]) {
                     //Scripts
                     sh """ 
-                        docker ps -aq | xargs docker stop | xargs docker rm
+                        //docker ps -aq | xargs docker stop | xargs docker rm
                         docker build -t ${REPO_NAME}:$BUILD_ID .
                         docker image tag ${REPO_NAME}:$BUILD_ID ${IMAGE_NAME}:$BUILD_ID
                         docker login -u oranbazak -p ${docker_hub}
