@@ -13,7 +13,6 @@ pipeline{
                     withCredentials([string(credentialsId: 'docker_hub_login_new', variable: 'docker_hub')]) {
                     //Scripts
                     sh """ 
-                        docker container prune --force
                         docker build -t ${REPO_NAME}:$BUILD_ID .
                         docker image tag ${REPO_NAME}:$BUILD_ID ${IMAGE_NAME}:$BUILD_ID
                         docker login -u oranbazak -p ${docker_hub}
