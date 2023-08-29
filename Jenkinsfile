@@ -13,10 +13,8 @@ pipeline{
                     sh """
                         docker build -t ${REPO_NAME}:$BUILD_ID .
                         docker image tag ${REPO_NAME}:$BUILD_ID ${IMAGE_NAME}:$BUILD_ID
-                        docker image tag ${REPO_NAME}:$BUILD_ID ${IMAGE_NAME}:latest
                         docker login -u oranbazak -p ${docker_hub}
                         docker push ${IMAGE_NAME}:$BUILD_ID
-                        docker push ${IMAGE_NAME}:latest
                         """
                     }
                 }
