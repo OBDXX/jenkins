@@ -26,7 +26,7 @@ pipeline{
             steps{
                 script{
                     sh '''
-                            docker run -d -p $BUILD_ID:5000 --name $BUILD_ID ${IMAGE_NAME}:$BUILD_ID
+                            docker run -d -p 5000:$BUILD_ID --name $BUILD_ID ${IMAGE_NAME}:$BUILD_ID
                         '''
                 }
             }
