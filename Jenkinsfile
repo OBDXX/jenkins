@@ -7,12 +7,13 @@ pipeline{
         IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${REPO_NAME}"
     }
     stages{
-        stage('Docker login, build, tag and push'){
+        stage('Docker stop, login, build, tag and push'){
             steps{
                 script{ //The credentials I stored in the jenkins (password)
                     withCredentials([string(credentialsId: 'docker_hub_login_new', variable: 'docker_hub')]) {
                     //Scripts
                     sh """ 
+                        docker ps -aq | xargs docker stop | xargs docker rm
                         docker build -t ${REPO_NAME}:$BUILD_ID .
                         docker image tag ${REPO_NAME}:$BUILD_ID ${IMAGE_NAME}:$BUILD_ID
                         docker login -u oranbazak -p ${docker_hub}
