@@ -1,17 +1,25 @@
-pipeline {
+pipeline{
     agent any
-
-    stages {
-        stage('Building') {
-            steps {
-                echo 'Building code'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Execute test'
-                echo 'Testing 1..2....4..5'
-            }
-        }
+    environment{
+        DOCKERHUB_USERNAME = "sahar449"
+        DOCKERHUB_LOGIN = "docker_hub_login"
+        APP_NAME = "gitops-demo-app"
+        IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
     }
-}
+    stages{
+        stage('Docker login, build, tag and push'){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'docker_hub_login', variable: 'docker_hub')]) {
+                    sh """
+                        docker build -t ${APP_NAME}:$BUILD_ID .
+                        docker image tag ${APP_NAME}:$BUILD_ID ${IMAGE_NAME}:$BUILD_ID
+                        docker image tag ${APP_NAME}:$BUILD_ID ${IMAGE_NAME}:latest
+                        docker login -u sahar449 -p ${docker_hub}
+                        docker push ${IMAGE_NAME}:$BUILD_ID
+                        docker push ${IMAGE_NAME}:latest
+                        """
+                    }
+                }
+            }
+        }
