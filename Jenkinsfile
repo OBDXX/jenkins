@@ -26,7 +26,6 @@ pipeline{
             steps{
                 script{
                     sh '''
-                           // docker pull ${IMAGE_NAME}:$BUILD_ID
                             docker run -d --name $BUILD_ID ${IMAGE_NAME}:$BUILD_ID
                         '''
                 }
