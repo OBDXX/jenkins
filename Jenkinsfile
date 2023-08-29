@@ -10,7 +10,7 @@ pipeline{
         stage('Docker login, build, tag and push'){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'docker_hub_login', variable: 'docker_hub')]) {
+                    withCredentials([string(credentialsId: 'docker_hub_login_new', variable: 'docker_hub')]) {
                     sh """
                         docker build -t ${APP_NAME}:$BUILD_ID .
                         docker image tag ${APP_NAME}:$BUILD_ID ${IMAGE_NAME}:$BUILD_ID
