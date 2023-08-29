@@ -22,7 +22,7 @@ pipeline{
                 }
             }
         }
-        stage('Docker pull and run curl test')
+        stage('Docker pull and run curl test'){
             steps{
                 script{
                     sh '''
@@ -31,5 +31,6 @@ pipeline{
                         '''
                 }
             }
+        }
     }
 }
