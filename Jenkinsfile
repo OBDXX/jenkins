@@ -1,9 +1,9 @@
 pipeline{
     agent any
     environment{
-        DOCKERHUB_USERNAME = "sahar449"
+        DOCKERHUB_USERNAME = "oranbazak"
         DOCKERHUB_LOGIN = "docker_hub_login"
-        APP_NAME = "gitops-demo-app"
+        APP_NAME = "project"
         IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
     }
     stages{
