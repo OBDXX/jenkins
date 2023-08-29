@@ -25,10 +25,8 @@ pipeline{
         stage('Docker pull and run curl test'){
             steps{
                 script{
-                    sh """
-                            docker run -d -p 5000:5000 --name $BUILD_ID ${IMAGE_NAME}:$BUILD_ID
-                            echo $(curl localhost:5000)
-                        """
+                           sh ' docker run -d -p 5000:5000 --name $BUILD_ID ${IMAGE_NAME}:$BUILD_ID '
+                           sh ' echo $(curl localhost:5000) '
                 }
             }
         }
